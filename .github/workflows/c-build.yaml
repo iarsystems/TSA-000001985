@@ -1,0 +1,81 @@
+name: Build Executables
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+      
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: iz77check-linux
+            asset_name: iz77check
+          - os: windows-latest
+            artifact_name: iz77check-windows
+            asset_name: iz77check.exe
+
+    runs-on: ${{ matrix.os }}
+
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: gcc -O2 -o ${{ matrix.asset_name }} src/iz77check.c
+        shell: bash
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: ${{ matrix.asset_name }}
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - name: Download all build outputs
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+      - name: Package per-OS zips
+        run: |
+          mkdir -p out pkg/linux pkg/windows
+          cp dist/iz77check-linux/iz77check pkg/linux/iz77check
+          chmod +x pkg/linux/iz77check
+          (cd pkg/linux && zip -X ../../out/iz77check-linux.zip iz77check)
+          cp dist/iz77check-windows/iz77check.exe pkg/windows/iz77check.exe
+          (cd pkg/windows && zip -X ../../out/iz77check-windows.zip iz77check.exe)
+          cd out
+          sha256sum *.zip > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+      # Requires GitHub Team or Enterprise Cloud if this repo is private
+      # (public repos get this for free on any plan). On a private repo
+      # under a personal Free-tier account, this step will fail and block
+      # the release step below from running.
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: 'out/iz77check-*.zip'
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            out/iz77check-linux.zip
+            out/iz77check-windows.zip
+            out/SHA256SUMS.txt

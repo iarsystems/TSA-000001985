@@ -1,0 +1,255 @@
+###############################################################################
+#
+# IAR ELF Linker V9.70.4.588/W64 for ARM                  24/Aug/2026  12:44:44
+# Copyright 2007-2026 IAR Systems AB.
+#
+#    Output file  =  D:\Temp\lz77_2\Debug\Exe\lz77_2.out
+#    Map file     =  D:\Temp\lz77_2\Debug\List\lz77_2.map
+#    Command line =
+#        -f D:\Temp\lz77_2\Debug\Exe\lz77_2.out.rsp
+#        (D:\Temp\lz77_2\Debug\Obj\lz77_2_main.o --no_out_extension -o
+#        D:\Temp\lz77_2\Debug\Exe\lz77_2.out --map
+#        D:\Temp\lz77_2\Debug\List\lz77_2.map --config
+#        D:\Temp\lz77_2\lz77_2.icf --semihosting --entry __iar_program_start
+#        --vfe --text_out locale --cpu=Cortex-M3 --fpu=None)
+#        --diagnostics_format=sarif_stdout --dependencies=n
+#        D:\Temp\lz77_2\Debug\Exe\lz77_2.out.iar_deps --dynamic_output
+#        D:\Temp\lz77_2\Debug\Exe\lz77_2.out.iar_dynout
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__CPP_Runtime   = 1
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because --advanced_heap
+was not specified and the application did not appear to
+be primarily optimized for speed.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x0 {  ro section .intvec };
+"P1":  place in [from 0x0 to 0x7'ffff] {  ro };
+"P2":  place in [from 0x1200 to 0x1287 repeat 2 displacement 0x100] {
+           ro section .data_init };
+"P3":  place in [from 0x2200 to 0x2287 repeat 2 displacement 0x100] {
+           ro section LOCALIZED_DATA_init };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P4":  place in [from 0x2000'0000 to 0x2000'ffff] {
+           rw,  block CSTACK,  block PROC_STACK,  block HEAP };
+initialize by copy with packing = none, complex ranges {  rw };
+initialize by copy with packing = lz77 {  rw section LOCALIZED_DATA };
+initialize manually with packing = lz77 {  rw section MINOR_DATA };
+use init table TAB for {  rw section MINOR_DATA };
+
+  Section            Kind         Address  Alignment   Size  Object
+  -------            ----         -------  ---------   ----  ------
+"A0":                                                  0x40
+  .intvec            ro code          0x0          4   0x40  vector_table_M.o [3]
+                                   - 0x40              0x40
+
+"P1":                                                 0x35b
+  .text              ro code         0x40          2  0x1fe  lz77_init.o [3]
+  .text              ro code        0x23e          2    0x6  abort.o [2]
+  .text              ro code        0x244          4   0x14  exit.o [4]
+  .text              ro code        0x258          4   0x40  data_init.o [3]
+  .text              ro code        0x298          4   0x3c  lz77_2_main.o [1]
+  .text              ro code        0x2d4          2   0x2a  copy_init3.o [3]
+  .text              ro code        0x2fe          2    0x2  vectortrap_M.o [3]
+  .text              ro code        0x300          4   0x22  cmain.o [3]
+  .text              ro code        0x322          2    0x4  low_level_init.o [2]
+  .text              ro code        0x326          2    0x4  exit.o [2]
+  .text              ro code        0x32c          4    0x4  cexit.o [3]
+  .text              ro code        0x330          4    0xa  cexit_2.o [3]
+  .iar.init_table    const          0x33c          4   0x3c  - Linker created -
+  .text              ro code        0x378          4   0x1e  cstartup_M.o [3]
+  .rodata            const          0x396               0x0  copy_init3.o [3]
+  .rodata            const          0x396               0x0  lz77_init.o [3]
+  Initializer bytes  const          0x396               0x5  <for P4-1>
+                                  - 0x39b             0x35b
+
+"P2", part 1 of 2:                                     0x88
+  Initializer bytes  const         0x1200          4   0x88  <for P4 s0>
+                                 - 0x1288              0x88
+
+"P2", part 2 of 2:                                     0x7c
+  Initializer bytes  const         0x1300          4   0x7c  <for P4 s0>
+                                 - 0x137c              0x7c
+
+"P3":                                                   0x5
+  Initializer bytes  const         0x2200               0x5  <for P4 s1>
+                                 - 0x2205               0x5
+
+"P4", part 1 of 4:                                     0x1c
+  P4-1                        0x2000'0000              0x1c  <Init block>
+    MINOR_DATA       inited   0x2000'0000          4   0x1c  lz77_2_main.o [1]
+                            - 0x2000'001c              0x1c
+
+"P4", part 2 of 4:                                    0x104
+  P4 s0                       0x2000'001c             0x104  <Init block>
+    .data            inited   0x2000'001c          4  0x100  lz77_2_main.o [1]
+    .data            inited   0x2000'011c          2    0x2  lz77_2_main.o [1]
+                            - 0x2000'0120             0x104
+
+"P4", part 3 of 4:                                    0x100
+  P4 s1                       0x2000'0120             0x100  <Init block>
+    LOCALIZED_DATA   inited   0x2000'0120          4  0x100  lz77_2_main.o [1]
+                            - 0x2000'0220             0x100
+
+"P4", part 4 of 4:                                    0x400
+  CSTACK                      0x2000'0220          8  0x400  <Block>
+    CSTACK           uninit   0x2000'0220             0x400  <Block tail>
+                            - 0x2000'0620             0x400
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+        0x39b       0x11ff     0xe65
+       0x1288       0x12ff      0x78
+       0x137c       0x21ff     0xe84
+       0x2205     0x7'ffff  0x7'ddfb
+  0x2000'0620  0x2000'ffff    0xf9e0
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Copy (__iar_copy_init3)
+    2 source ranges, total size 0x104 (100% of destination):
+               0x1200   0x88
+               0x1300   0x7c
+    1 destination range, total size 0x102:
+          0x2000'001c  0x102
+
+Copy/lz77 (__iar_lz77_init3)
+    1 source range, total size 0x5 (1% of destination):
+               0x2200    0x5
+    1 destination range, total size 0x100:
+          0x2000'0120  0x100
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  ro data  rw data
+    ------            -------  -------  -------
+command line/config:
+    -------------------------------------------
+    Total:
+
+D:\Temp\lz77_2\Debug\Obj: [1]
+    lz77_2_main.o          60      268      542
+    -------------------------------------------
+    Total:                 60      268      542
+
+dl7M_tln.a: [2]
+    abort.o                 6
+    exit.o                  4
+    low_level_init.o        4
+    -------------------------------------------
+    Total:                 14
+
+rt7M_tl.a: [3]
+    cexit.o                 4
+    cexit_2.o              10
+    cmain.o                34
+    copy_init3.o           42
+    cstartup_M.o           30
+    data_init.o            64
+    lz77_init.o           510
+    vector_table_M.o       64
+    vectortrap_M.o          2
+    -------------------------------------------
+    Total:                760
+
+shb_l.a: [4]
+    exit.o                 20
+    -------------------------------------------
+    Total:                 20
+
+    Gaps                    2        2
+    Linker created                  62    1'024
+-----------------------------------------------
+    Grand Total:          856      332    1'566
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base         0x33c          --   Gb  - Linker created -
+.iar.init_table$$Limit        0x378          --   Gb  - Linker created -
+?main                         0x301         Code  Gb  cmain.o [3]
+BusFault_Handler              0x2ff         Code  Wk  vectortrap_M.o [3]
+CSTACK$$Base            0x2000'0220          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'0620          --   Gb  - Linker created -
+DebugMon_Handler              0x2ff         Code  Wk  vectortrap_M.o [3]
+HardFault_Handler             0x2ff         Code  Wk  vectortrap_M.o [3]
+InStream_Read                  0x55   0x20  Code  Lc  lz77_init.o [3]
+InStream_StepRegion            0x41   0x14  Code  Lc  lz77_init.o [3]
+MemManage_Handler             0x2ff         Code  Wk  vectortrap_M.o [3]
+NMI_Handler                   0x2ff         Code  Wk  vectortrap_M.o [3]
+OutStream_Write                0x75   0x46  Code  Lc  lz77_init.o [3]
+PendSV_Handler                0x2ff         Code  Wk  vectortrap_M.o [3]
+Region$$Table$$Base           0x33c          --   Gb  - Linker created -
+Region$$Table$$Limit          0x378          --   Gb  - Linker created -
+SVC_Handler                   0x2ff         Code  Wk  vectortrap_M.o [3]
+SysTick_Handler               0x2ff         Code  Wk  vectortrap_M.o [3]
+TAB$$Base                       0x0          --   Gb  - Linker created -
+TAB$$Limit                      0x0          --   Gb  - Linker created -
+UsageFault_Handler            0x2ff         Code  Wk  vectortrap_M.o [3]
+__cmain                       0x301         Code  Gb  cmain.o [3]
+__exit                        0x245   0x14  Code  Gb  exit.o [4]
+__iar_copy_init3              0x2d5   0x2a  Code  Gb  copy_init3.o [3]
+__iar_data_init3              0x259   0x28  Code  Gb  data_init.o [3]
+__iar_lz77_init3               0xbb  0x184  Code  Gb  lz77_init.o [3]
+__iar_program_start           0x379         Code  Gb  cstartup_M.o [3]
+__iar_table_init3             0x281   0x18  Code  Gb  data_init.o [3]
+__low_level_init              0x323    0x4  Code  Gb  low_level_init.o [2]
+__vector_table                  0x0         Data  Gb  vector_table_M.o [3]
+_call_main                    0x30d         Code  Gb  cmain.o [3]
+_exit                         0x32d         Code  Gb  cexit.o [3]
+_exit_2                       0x331         Code  Gb  cexit_2.o [3]
+abort                         0x23f    0x6  Code  Gb  abort.o [2]
+arr                     0x2000'001c  0x100  Data  Gb  lz77_2_main.o [1]
+arr2                    0x2000'0120  0x100  Data  Gb  lz77_2_main.o [1]
+arr3                    0x2000'0000   0x1c  Data  Gb  lz77_2_main.o [1]
+crc                     0x2000'011c    0x2  Data  Gb  lz77_2_main.o [1]
+exit                          0x327    0x4  Code  Gb  exit.o [2]
+main                          0x299   0x3c  Code  Gb  lz77_2_main.o [1]
+
+
+[1] = D:\Temp\lz77_2\Debug\Obj
+[2] = dl7M_tln.a
+[3] = rt7M_tl.a
+[4] = shb_l.a
+
+    856 bytes of readonly  code memory
+    332 bytes of readonly  data memory
+  1'566 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

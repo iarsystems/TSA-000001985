@@ -1,0 +1,6 @@
+Found INIT TABLE map section, listing entries
+    Skipping non lz77 entry
+    D:\Temp\lz77_2\Debug\Exe\lz77_2.out 2200:5 100 v
+No more entries found
+Scanning ENTRY LIST
+Some lz77 symbols found: __iar_lz77_init3

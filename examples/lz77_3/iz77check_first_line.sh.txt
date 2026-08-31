@@ -1,0 +1,39 @@
+Parsing done.
+File     = "lz77_3-copy.out"
+Range    = 1200+88,1300+7C
+Expected = 102
+Verbose  = true
+Error at offset 2, read 0 = overflow
+offset 0, dest 0, 2 literal bytes, 0 matched, 0 offset, wrote 2 expected 2
+Error at offset 7, offset 206 outside buffer
+offset 4, dest 2, 1 literal bytes, 8 matched, 206 offset, wrote 9 expected 9
+Error at offset A, offset A9FF outside buffer
+offset 7, dest B, 0 literal bytes, 15 matched, A9FF offset, wrote 15 expected 15
+Error at offset E, offset 6272 outside buffer
+offset A, dest 1A, 1 literal bytes, 7 matched, 6272 offset, wrote 8 expected 8
+Error at offset 11, offset 2E outside buffer
+offset E, dest 22, 1 literal bytes, 5 matched, 2E offset, wrote 6 expected 6
+Error at offset 15, offset 36A outside buffer
+offset 11, dest 28, 1 literal bytes, 14 matched, 36A offset, wrote 15 expected 15
+Error at offset 1A, offset 1707 outside buffer
+offset 15, dest 37, 2 literal bytes, 7 matched, 1707 offset, wrote 9 expected 9
+Error at offset 1D, offset D3 outside buffer
+offset 1A, dest 40, 1 literal bytes, 4 matched, D3 offset, wrote 5 expected 5
+Error at offset 1F, offset 16C outside buffer
+offset 1D, dest 45, 0 literal bytes, 16 matched, 16C offset, wrote 16 expected 16
+Error at offset 23, offset 113 outside buffer
+offset 1F, dest 55, 2 literal bytes, 15 matched, 113 offset, wrote 17 expected 17
+Error at offset 27, offset 1CB outside buffer
+offset 23, dest 66, 2 literal bytes, 15 matched, 1CB offset, wrote 17 expected 17
+Error at offset 2B, offset 1E6 outside buffer
+offset 27, dest 77, 2 literal bytes, 16 matched, 1E6 offset, wrote 18 expected 18
+Error at offset 31, offset 5D41 outside buffer
+offset 2B, dest 89, 2 literal bytes, 97 matched, 5D41 offset, wrote 99 expected 99
+Error at offset 34, offset 290 outside buffer
+offset 31, dest EC, 1 literal bytes, 15 matched, 290 offset, wrote 16 expected 16
+Error at offset 7C, offset 7954 outside buffer
+offset 34, dest FC, 68 literal bytes, 10 matched, 7954 offset, wrote 78 expected 78
+offset 7C, dest 14A, 1 literal bytes, 40 matched, 2 offset, wrote 41 expected 41
+offset 80, dest 173, 224 literal bytes, 14 matched, 0 offset, wrote 238 expected 238
+Wrote 0x261 bytes, expected 0x102.
+The sequence has at least one problem

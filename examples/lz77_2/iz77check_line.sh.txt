@@ -1,0 +1,7 @@
+Parsing done.
+File     = "lz77_2-copy.out"
+Range    = 2200+5
+Expected = 100
+Verbose  = true
+offset 0, dest 0, 2 literal bytes, 254 matched, 1 offset, wrote 256 expected 256
+The sequence does not have a problem
